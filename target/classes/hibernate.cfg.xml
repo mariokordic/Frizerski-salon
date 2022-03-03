@@ -30,6 +30,6 @@
         <mapping class="edunova.model.Korisnik" />
         <mapping class="edunova.model.Termin"/>
         <mapping class="edunova.model.Usluga" />
-        <mapping class="edunova.model.Isporucena_usluga"/>
+        <mapping class="edunova.model.IsporucenaUsluga"/>
     </session-factory>
 </hibernate-configuration>

@@ -13,8 +13,8 @@ import javax.persistence.ManyToOne;
  * @author mkordic
  */
 @Entity(name = "isporucena_usluga")
-public class Isporucena_usluga extends Entitet {
-    @ManyToOne
+public class IsporucenaUsluga {
+     @ManyToOne
     private Usluga usluga;
     @ManyToOne
     private Termin termin;
@@ -52,6 +52,4 @@ public class Isporucena_usluga extends Entitet {
     public void setUkupnaCijena(BigDecimal ukupnaCijena) {
         this.ukupnaCijena = ukupnaCijena;
     }
-    
-    
 }
