@@ -11,7 +11,7 @@ import javax.persistence.Id;
  *
  * @author mkordic
  */
-@Entity(name = "djelatnik")
+@Entity
 public class Djelatnik extends Entitet{
     public Djelatnik(){
         

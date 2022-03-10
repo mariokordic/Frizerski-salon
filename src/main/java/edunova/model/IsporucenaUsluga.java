@@ -12,8 +12,8 @@ import javax.persistence.ManyToOne;
  *
  * @author mkordic
  */
-@Entity(name = "isporucena_usluga")
-public class IsporucenaUsluga {
+@Entity
+public class IsporucenaUsluga extends Entitet{
      @ManyToOne
     private Usluga usluga;
     @ManyToOne

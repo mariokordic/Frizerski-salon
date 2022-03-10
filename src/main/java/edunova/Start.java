@@ -6,6 +6,7 @@ package edunova;
 
 import edunova.model.Djelatnik;
 import edunova.util.HibernateUtil;
+import java.awt.SplashScreen;
 import org.hibernate.Session;
 
 /**
@@ -28,8 +29,9 @@ public class Start {
             
             session.getTransaction().commit();;
     }
-    public static void main(String[] args) {
-      new Start();  
+      public static void main(String[] args) {
+        new edunova.view.SplashScreen().setVisible(true);
+        //PocetniInsert.unosOperatera();
     }
 
    

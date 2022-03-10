@@ -12,7 +12,7 @@ import javax.persistence.Id;
  *
  * @author mkordic
  */
-@Entity(name="usluga")
+@Entity
 public class Usluga extends Entitet{
 
     private String naziv;

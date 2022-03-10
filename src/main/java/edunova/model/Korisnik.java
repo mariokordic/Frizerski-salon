@@ -11,7 +11,7 @@ import javax.persistence.Id;
  *
  * @author mkordic
  */
-@Entity(name="korisnik")
+@Entity
 public class Korisnik  extends Entitet{
 
         private String ime;
