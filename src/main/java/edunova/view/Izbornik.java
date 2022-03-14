@@ -90,6 +90,11 @@ public class Izbornik extends javax.swing.JFrame {
         jMenu2.setText("Programi");
 
         jMenuItem2.setText("Djelatnik");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuItem3.setText("Korisnik");
@@ -146,6 +151,10 @@ public class Izbornik extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+       new DjelatnikProzor().setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
    
 
