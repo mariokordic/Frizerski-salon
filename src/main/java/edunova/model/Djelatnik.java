@@ -16,7 +16,7 @@ public class Djelatnik extends Entitet{
     public Djelatnik(){
         
     }
-    public Djelatnik(String ime, String prezime, String adresa, String grad, String drzava, int postanskiBroj) {
+    public Djelatnik(String ime, String prezime, String adresa, String grad, String drzava, String postanskiBroj) {
         this.ime = ime;
         this.prezime = prezime;
         this.adresa = adresa;
@@ -29,7 +29,7 @@ public class Djelatnik extends Entitet{
 	private String adresa;
 	private String grad;
 	private String drzava;
-	private int postanskiBroj; 
+	private String postanskiBroj; 
 
   
 
@@ -73,11 +73,11 @@ public class Djelatnik extends Entitet{
         this.drzava = drzava;
     }
 
-    public int getPostanskiBroj() {
+    public String getPostanskiBroj() {
         return postanskiBroj;
     }
 
-    public void setPostanskiBroj(int postanskiBroj) {
+    public void setPostanskiBroj(String postanskiBroj) {
         this.postanskiBroj = postanskiBroj;
     }
         

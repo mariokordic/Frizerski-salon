@@ -6,6 +6,7 @@ package edunova;
 
 import edunova.model.Djelatnik;
 import edunova.util.HibernateUtil;
+import edunova.util.PocetniInsert;
 import java.awt.SplashScreen;
 import org.hibernate.Session;
 
@@ -17,21 +18,12 @@ public class Start {
     private Session session;
     public Start(){
         this.session = HibernateUtil.getSession();
-        veze();
+
     }
-     private void veze() {
-            session.beginTransaction();
-            
-            Djelatnik djelatnik = new Djelatnik("Mirela", "Čulič", "Sljemenska 45", "Osijek", "HR", 31000);
-            session.save(djelatnik);
-             djelatnik = new Djelatnik("Ana", "Brdar", "Matije Gubca 56", "Valpovo","HR", 31322);
-            session.save(djelatnik);
-            
-            session.getTransaction().commit();;
-    }
+    
       public static void main(String[] args) {
         new edunova.view.SplashScreen().setVisible(true);
-        //PocetniInsert.unosOperatera();
+          PocetniInsert.izvedi();
     }
 
    

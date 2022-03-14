@@ -20,7 +20,7 @@ public class Korisnik  extends Entitet{
 	private String adresa;
 	private String grad;
 	private String drzava;
-	private int postanskiBroj;
+	private String postanskiBroj;
 	private char spol; 
 
  
@@ -72,11 +72,11 @@ public class Korisnik  extends Entitet{
             this.drzava = drzava;
         }
 
-        public int getPostanskiBroj() {
+        public String getPostanskiBroj() {
             return postanskiBroj;
         }
 
-        public void setPostanskiBroj(int postanskiBroj) {
+        public void setPostanskiBroj(String postanskiBroj) {
             this.postanskiBroj = postanskiBroj;
         }
 
