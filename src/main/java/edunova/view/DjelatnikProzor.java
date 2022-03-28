@@ -7,7 +7,11 @@ package edunova.view;
 import edunova.controller.ObradaDjelatnik;
 import javax.swing.DefaultListModel;
 import edunova.model.Djelatnik;
+import edunova.util.EdunovaException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -61,6 +65,11 @@ public class DjelatnikProzor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        lstEntiteti.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstEntitetiValueChanged(evt);
+            }
+        });
         JScrollPane.setViewportView(lstEntiteti);
 
         jLabel1.setText("Ime");
@@ -82,10 +91,25 @@ public class DjelatnikProzor extends javax.swing.JFrame {
         jLabel6.setText("Adresa");
 
         btnKreiraj.setText("Kreiraj");
+        btnKreiraj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKreirajActionPerformed(evt);
+            }
+        });
 
         btnPromjeni.setText("Promjeni");
+        btnPromjeni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPromjeniActionPerformed(evt);
+            }
+        });
 
         btnIzbrisi.setText("Izbriši");
+        btnIzbrisi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIzbrisiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,6 +187,74 @@ public class DjelatnikProzor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtImeActionPerformed
 
+    private void lstEntitetiValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEntitetiValueChanged
+       if(evt.getValueIsAdjusting() || lstEntiteti.getSelectedValue()==null){
+           return;
+       }
+       obrada.setEntitet(lstEntiteti.getSelectedValue());
+       var e = obrada.getEntitet();
+       txtIme.setText(e.getIme());
+       txtPrezime.setText(e.getPrezime());
+       txtDrzava.setText(e.getDrzava());
+       txtGrad.setText(e.getGrad());
+       txtPostanskiBroj.setText(e.getPostanskiBroj());
+       txtAdresa.setText(e.getAdresa());
+       
+       
+       
+    }//GEN-LAST:event_lstEntitetiValueChanged
+
+    private void btnKreirajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKreirajActionPerformed
+    try{
+        obrada.setEntitet(new Djelatnik());
+        preuzmiVrijednosti();
+        obrada.create();
+        ucitaj();
+    }catch (EdunovaException ex){ 
+        JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+    } 
+
+    }//GEN-LAST:event_btnKreirajActionPerformed
+
+    private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
+        if(obrada.getEntitet()==null){
+            JOptionPane.showMessageDialog(getRootPane(), "Prvo odaberi stavku");
+            return;
+        }
+        preuzmiVrijednosti();
+        
+         try {
+             obrada.update();
+             ucitaj();
+         } catch (EdunovaException ex) {
+             JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+         }
+        
+        
+    }//GEN-LAST:event_btnPromjeniActionPerformed
+
+    private void btnIzbrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzbrisiActionPerformed
+          if(obrada.getEntitet()==null){
+            JOptionPane.showMessageDialog(getRootPane(), "Prvo odaberi stavku");
+            return;
+        }
+          
+          if(JOptionPane.showConfirmDialog(getRootPane(),
+                                           "Sigurno obrisati \""+obrada.getEntitet().getPrezime()+"\"?",
+                                           "Brisanje",
+                                           JOptionPane.YES_NO_OPTION,
+                                           JOptionPane.QUESTION_MESSAGE)==JOptionPane.NO_OPTION){
+                                           return;
+          }
+         try {
+             obrada.delete();
+             ucitaj();
+         } catch (EdunovaException ex) {
+             JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+         }
+          
+    }//GEN-LAST:event_btnIzbrisiActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -185,5 +277,14 @@ public class DjelatnikProzor extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrezime;
     // End of variables declaration//GEN-END:variables
 
-   
+   private void preuzmiVrijednosti(){
+       var e = obrada.getEntitet();
+       e.setIme(txtIme.getText());
+       e.setPrezime(txtPrezime.getText());
+       e.setDrzava(txtDrzava.getText());
+       e.setGrad(txtGrad.getText());
+       e.setAdresa(txtAdresa.getText());
+       e.setPostanskiBroj(txtPostanskiBroj.getText());
+       
+   }
 }

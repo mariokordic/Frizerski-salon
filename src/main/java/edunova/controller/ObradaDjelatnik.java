@@ -21,13 +21,11 @@ public class ObradaDjelatnik extends Obrada<Djelatnik>{
 
     @Override
     protected void kontrolaCreate() throws EdunovaException {
-      kontrolaCreate();        
+             
     }
 
     @Override
-    protected void kontorlaUpdate() throws EdunovaException {
-        kontorlaUpdate();
-          
+    protected void kontorlaUpdate() throws EdunovaException {     
     }
 
     @Override

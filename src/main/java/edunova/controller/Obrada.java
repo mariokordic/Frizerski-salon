@@ -39,8 +39,7 @@ public abstract class Obrada<T> {
       return entitet;
     }
     
-    public void delate() throws EdunovaException{
-        kontorlaDelete();
+    public void delete() throws EdunovaException{
         session.beginTransaction();
         session.delete(entitet);
         session.getTransaction().commit();
